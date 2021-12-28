@@ -460,11 +460,11 @@ class AdminController extends Controller
         $i=0;
 
         $FileName='Io_clifor_detcon.dat';
-        $personalinfo = file("DatFile/".$FileName);
+        $personalinfo = file('C:\DatFile/'.$FileName);
 
 
        //dd($personalinfo);
-
+       //
         $Header=array();
 
         $Header=explode('|',$personalinfo[0]);
