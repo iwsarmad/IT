@@ -22,7 +22,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
 use Spatie\Permission\Models\Role;
-
+use App\Models\io_art;
 class AdminController extends Controller
 {
     // AddClient
@@ -414,6 +414,33 @@ class AdminController extends Controller
 
     public function ReadFile()
     {
+
+
+
+
+        $FilesDumps = DB::table('dumps_maps')->select('FileName','CronText')->distinct()->get();
+
+        foreach ($FilesDumps as $FilesDump) {
+
+            $FilesDump->CronText::truncate();
+            $personalinfo = file('C:\DatFile/' . $FilesDump->FileName);
+            $personalinfo = str_replace("\r\n", "", $personalinfo);
+            $Header = explode('|', $personalinfo[0]); // this is for foreach Count of each colmun in row
+            $RowSizer = sizeof($Header);
+            foreach ($personalinfo as $key=> $personalinf) {
+                if($key>0){
+                    $ArrayLine=array();
+                    $Items = explode('|', $personalinf);
+                    for($i=0;$i<$RowSizer;$i++){
+                        $ArrayLine[$Header[$i]]=$Items[$i];
+                    }
+                    //  dd($ArrayLine);
+                    $FilesDump->CronText::create($ArrayLine);
+                }
+
+
+            }
+        }
 
 
 
