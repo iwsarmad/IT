@@ -421,11 +421,12 @@ class AdminController extends Controller
         $FilesDumps = DB::table('dumps_maps')->select('FileName','CronText')->distinct()->get();
 
         foreach ($FilesDumps as $FilesDump) {
-
             $FilesDump->CronText::truncate();
             $personalinfo = file('C:\DatFile/' . $FilesDump->FileName);
             $personalinfo = str_replace("\r\n", "", $personalinfo);
+
             $Header = explode('|', $personalinfo[0]); // this is for foreach Count of each colmun in row
+
             $RowSizer = sizeof($Header);
             foreach ($personalinfo as $key=> $personalinf) {
                 if($key>0){
@@ -434,7 +435,7 @@ class AdminController extends Controller
                     for($i=0;$i<$RowSizer;$i++){
                         $ArrayLine[$Header[$i]]=$Items[$i];
                     }
-                    //  dd($ArrayLine);
+                //      dd($ArrayLine);
                     $FilesDump->CronText::create($ArrayLine);
                 }
 
