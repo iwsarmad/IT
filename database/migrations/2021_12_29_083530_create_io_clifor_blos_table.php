@@ -13,8 +13,19 @@ class CreateIoCliforBlosTable extends Migration
      */
     public function up()
     {
+        // ||||||||
         Schema::create('io_clifor_blos', function (Blueprint $table) {
             $table->id();
+            $table->string("CHIAVE")->nullable();
+            $table->string("COD_DITTA")->nullable();
+            $table->string("TIPO_CLIFOR")->nullable();
+            $table->string("COD_CLIFOR")->nullable();
+            $table->string("COD_BLOCCO")->nullable();
+            $table->string("TIPO_BLOCCO")->nullable();
+            $table->string("NOTA_BLOCCO")->nullable();
+            $table->string("DATA_BLOCCO")->nullable();
+            $table->string("DAT_ULT_MOD")->nullable();
+
             $table->timestamps();
         });
     }

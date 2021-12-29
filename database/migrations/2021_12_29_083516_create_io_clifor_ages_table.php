@@ -13,8 +13,19 @@ class CreateIoCliforAgesTable extends Migration
      */
     public function up()
     {
+
+        // |||||||
         Schema::create('io_clifor_ages', function (Blueprint $table) {
             $table->id();
+            $table->string('CHIAVE')->nullable();
+            $table->string('COD_DITTA')->nullable();
+            $table->string('TIPO_CLIFOR')->nullable();
+            $table->string('COD_CLIFOR')->nullable();
+            $table->string('COD_AGE')->nullable();
+            $table->string('RAGSOC_AGE')->nullable();
+            $table->string('PREFERENZIALE')->nullable();
+            $table->string('DAT_ULT_MOD')->nullable();
+
             $table->timestamps();
         });
     }

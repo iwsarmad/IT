@@ -13,8 +13,18 @@ class CreateIoArtUmsTable extends Migration
      */
     public function up()
     {
+        // ||||||||
         Schema::create('io_art_ums', function (Blueprint $table) {
             $table->id();
+            $table->string("CHIAVE")->nullable();
+            $table->string("COD_DITTA")->nullable();
+            $table->string("COD_ART")->nullable();
+            $table->string("UM")->nullable();
+            $table->string("DESC_UM")->nullable();
+            $table->string("FAT_CONV")->nullable();
+            $table->string("TIPO_UM")->nullable();
+            $table->string("FLG_DEFAULT")->nullable();
+            $table->string("DAT_ULT_MOD")->nullable();
             $table->timestamps();
         });
     }

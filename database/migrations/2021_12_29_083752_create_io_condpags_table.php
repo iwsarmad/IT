@@ -14,7 +14,13 @@ class CreateIoCondpagsTable extends Migration
     public function up()
     {
         Schema::create('io_condpags', function (Blueprint $table) {
+            // ||||
             $table->id();
+            $table->string("CHIAVE")->nullable();
+            $table->string("COD_DITTA")->nullable();
+            $table->string("CODICE")->nullable();
+            $table->string("DESCRIZIONE")->nullable();
+            $table->string("DAT_ULT_MOD")->nullable();
             $table->timestamps();
         });
     }

@@ -13,8 +13,16 @@ class CreateIoCittasTable extends Migration
      */
     public function up()
     {
+
         Schema::create('io_cittas', function (Blueprint $table) {
             $table->id();
+            $table->string('CHIAVE')->nullable();
+            $table->string('COD_DITTA')->nullable();
+            $table->string('CODICE')->nullable();
+            $table->string('DESCRIZIONE')->nullable();
+            $table->string('CAP')->nullable();
+            $table->string('PROVINCIA')->nullable();
+            $table->string('DAT_ULT_MOD')->nullable();
             $table->timestamps();
         });
     }
