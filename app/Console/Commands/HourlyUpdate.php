@@ -4,8 +4,10 @@ namespace App\Console\Commands;
 
 use App\Models\BusinessInvites;
 use App\Models\DumpsMaps;
+use App\Models\IoAgent;
 use Carbon\Carbon;
 use Illuminate\Console\Command;
+use Illuminate\Support\Facades\DB;
 
 class HourlyUpdate extends Command
 {
@@ -46,17 +48,44 @@ class HourlyUpdate extends Command
 
         $dir='C:\DatFile/';
         if (is_dir($dir)) {
+            //DumpsMaps
             if ($dh = opendir($dir)) {
                 while (($file = readdir($dh)) !== false) {
                     if(strlen($file)>2){
                         DumpsMaps::create([
                             "FileName"=>$file,
-                            "CronText"=>Carbon::now()->isoWeek
+                            "CronText"=>explode('.',$file)[0]
                         ]);
                     }
 
                 }
                 closedir($dh);
+            }
+        }
+
+
+
+
+
+        $FilesDumps = DB::table('dumps_maps')->select('FileName')->distinct()->get();
+        IoAgent::truncate();
+        foreach ($FilesDumps as $FilesDump) {
+            $personalinfo = file('C:\DatFile/' . $FilesDump->FileName);
+            $personalinfo = str_replace("\r\n", "", $personalinfo);
+            $Header = explode('|', $personalinfo[0]); // this is for feach Count of each colmun in row
+            $RowSizer = sizeof($Header);
+            foreach ($personalinfo as $key=> $personalinf) {
+                if($key>0){
+                    $ArrayLine=array();
+                    $Items = explode('|', $personalinf);
+                    for($i=0;$i<$RowSizer;$i++){
+                        $ArrayLine[$Header[$i]]=$Items[$i];
+                    }
+                    //  dd($ArrayLine);
+                    $FilesDump->CronText::create($ArrayLine);
+                }
+
+
             }
         }
 

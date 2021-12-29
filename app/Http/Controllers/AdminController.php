@@ -8,6 +8,7 @@ use App\Models\Branch;
 use App\Models\BusinessInvites;
 use App\Models\Client;
 use App\Models\DumpsMaps;
+use App\Models\IoAgent;
 use App\Models\Port;
 use App\Models\Setting;
 use App\Models\Ship;
@@ -415,26 +416,7 @@ class AdminController extends Controller
     {
 
 
-        $FilesDumps = DB::table('dumps_maps')->select('FileName')->distinct()->get();
-        foreach ($FilesDumps as $FilesDump) {
-            $personalinfo = file('C:\DatFile/' . $FilesDump->FileName);
-            $personalinfo = str_replace("\r\n", "", $personalinfo);
-            $Header = explode('|', $personalinfo[0]); // this is for feach Count of each colmun in row
-            $RowSizer = sizeof($Header);
-            foreach ($personalinfo as $key=> $personalinf) {
-                if($key>0){
-                    $ArrayLine=array();
-                    $Items = explode('|', $personalinf);
-                    for($i=0;$i<$RowSizer;$i++){
-                        $ArrayLine[$Header[$i]]=$Items[$i];
-                    }
 
-                 //dd($ArrayLine);
-                }
-
-
-            }
-        }
 
         /*
          $Header=array();
