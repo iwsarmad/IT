@@ -3,6 +3,8 @@
 namespace App\Console\Commands;
 
 use App\Models\BusinessInvites;
+use App\Models\DumpsMaps;
+use Carbon\Carbon;
 use Illuminate\Console\Command;
 
 class HourlyUpdate extends Command
@@ -41,44 +43,22 @@ class HourlyUpdate extends Command
 
 
 
-        $i=0;
 
-        $FileName='Io_clifor_detcon.dat';
-        $personalinfo = file('C:\DatFile/'.$FileName);
+        $dir='C:\DatFile/';
+        if (is_dir($dir)) {
+            if ($dh = opendir($dir)) {
+                while (($file = readdir($dh)) !== false) {
+                    if(strlen($file)>2){
+                        DumpsMaps::create([
+                            "FileName"=>$file,
+                            "CronText"=>Carbon::now()->isoWeek
+                        ]);
+                    }
 
-
-        //dd($personalinfo);
-        //
-        $Header=array();
-
-        $Header=explode('|',$personalinfo[0]);
-
-        //  dd($Header);
-        foreach ($personalinfo as $personalinf){
-            $Item=explode('|',$personalinf);
-            // dd($Item);
-
-
-            if ($i>0)
-            {
-
-
-                BusinessInvites::create([
-                    'COGNOME_NOME'    => $Item[7]
-                    ,'NOME'           => $Item[8]
-                    ,'EMAIL1'        =>  $Item[20]
-                ]);
+                }
+                closedir($dh);
             }
-
-
-
-
-            $i=$i+1;
-
-
-
         }
-
 
 
 
