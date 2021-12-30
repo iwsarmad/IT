@@ -55,6 +55,7 @@ class CreateIoCliforGensTable extends Migration
             $table->string("MACROAREA")->nullable();
             $table->string("DATA_CREAZIONE")->nullable();
             $table->string("AREA")->nullable();
+            $table->string("COD_CATEGORIA")->nullable();
             //|||||||||||||||||
 
             $table->string("ZONA")->nullable();

@@ -17,6 +17,7 @@ class CreateIoCliforScadocsTable extends Migration
             // |||||||||||||||||||
             $table->id();
             $table->string("CHIAVE")->nullable();
+            $table->string("COD_DITTA")->nullable();
             $table->string("COD_RATA")->nullable();
             $table->string("DAT_SCAD")->nullable();
             $table->string("IMPORTO")->nullable();

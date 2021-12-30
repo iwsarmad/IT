@@ -23,6 +23,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
 use Spatie\Permission\Models\Role;
 use App\Models\io_art;
+
 class AdminController extends Controller
 {
     // AddClient
@@ -416,52 +417,44 @@ class AdminController extends Controller
     {
 
 
-
-
-        $FilesDumps = DB::table('dumps_maps')->select('FileName','CronText')->distinct()->get();
-
+        $FilesDumps = DB::table('dumps_maps')->select('FileName', 'CronText','id')->distinct()->get();
+        $ArrayLine = array();
         foreach ($FilesDumps as $FilesDump) {
             $FilesDump->CronText::truncate();
             $personalinfo = file('C:\DatFile/' . $FilesDump->FileName);
             $personalinfo = str_replace("\r\n", "", $personalinfo);
-
             $Header = explode('|', $personalinfo[0]); // this is for foreach Count of each colmun in row
-
             $RowSizer = sizeof($Header);
-            foreach ($personalinfo as $key=> $personalinf) {
-                if($key>0){
-                    $ArrayLine=array();
+            foreach ($personalinfo as $key => $personalinf) {
+
+                $ItemWithDataArray=array();
+                if ($key > 0) {
+
                     $Items = explode('|', $personalinf);
-                    for($i=0;$i<$RowSizer;$i++){
-                        $ArrayLine[$Header[$i]]=$Items[$i];
+                    for ($i = 0; $i < $RowSizer; $i++) {
+                        $ItemWithDataArray[$Header[$i]] = $Items[$i];
+
                     }
-                //      dd($ArrayLine);
-                    $FilesDump->CronText::create($ArrayLine);
+                    $ArrayLine[$FilesDump->id]=$ItemWithDataArray;
+
                 }
 
-
             }
+
+            $personalinfo=0;
+            $Header=0;
+        }
+
+        foreach ($FilesDumps as $FilesDumpz) {
+
+        //    echo  DumpsMaps::find(17)->CronText."%%%%%%%".DumpsMaps::find(17)->id."<br>";
+            DumpsMaps::find(17)->CronText::create($ArrayLine[17]);
+
         }
 
 
 
 
-        /*
-         $Header=array();
-         $Header=explode('|',$personalinfo[0]);
-         foreach ($personalinfo as $personalinf){
-             $Item=explode('|',$personalinf);
-            // dd($Item);
-             if ($i>0)
-             {
-                 BusinessInvites::create([
-                     'COGNOME_NOME'    => $Item[7]
-                     ,'NOME'           => $Item[8]
-                     ,'EMAIL1'        =>  $Item[20]
-                 ]);
-             }
-             $i=$i+1;
-         }*/
 
 
     }

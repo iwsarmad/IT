@@ -33,6 +33,7 @@ class CreateIoCliforDestsTable extends Migration
             $table->string("FAX")->nullable();
             $table->string("NOTE_DEST")->nullable();
             $table->string("DAT_ULT_MOD")->nullable();
+            $table->string('CELLULARE')->nullable();
             $table->timestamps();
         });
     }

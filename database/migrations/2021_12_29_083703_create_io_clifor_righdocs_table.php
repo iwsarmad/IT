@@ -34,6 +34,7 @@ class CreateIoCliforRighdocsTable extends Migration
             $table->string('TIPO_CLIFOR')->nullable();
             $table->string('COD_CLIFOR')->nullable();
             $table->string('DAT_ULT_MOD')->nullable();
+            $table->string('COD_ART')->nullable();
 
             $table->timestamps();
         });
