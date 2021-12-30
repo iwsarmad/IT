@@ -8,4 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class io_condpag extends Model
 {
     use HasFactory;
+    protected $fillable=[
+        'CHIAVE','COD_DITTA','CODICE','DESCRIZIONE','DAT_ULT_MOD'
+    ];
 }
