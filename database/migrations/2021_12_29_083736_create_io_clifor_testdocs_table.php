@@ -35,7 +35,7 @@ class CreateIoCliforTestdocsTable extends Migration
             $table->string("DEPOSITO")->nullable();
             $table->string("COD_VALUTA")->nullable();
             $table->string("VALUTA")->nullable();
-            $table->string("CHIAVE")->nullable();
+         //   $table->string("CHIAVE")->nullable();
             $table->string("TOTALEDOC")->nullable();
             $table->string("DATACONS")->nullable();
             $table->string("SCADENZE")->nullable();
