@@ -13,8 +13,6 @@ class ApiController extends Controller
     {
 
         $io_arts=io_art::all();
-
         return response(["io_art"=>$io_arts],200);
-
     }
 }
