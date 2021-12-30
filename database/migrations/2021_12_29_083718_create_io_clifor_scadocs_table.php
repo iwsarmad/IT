@@ -33,6 +33,7 @@ class CreateIoCliforScadocsTable extends Migration
             $table->string("COD_CLIFOR")->nullable();
             $table->string("DATA_DOC")->nullable();
             $table->string("NUM_DOC")->nullable();
+            $table->string("NUM_REG")->nullable();
             $table->string("COD_VALUTA")->nullable();
             $table->string("DAT_ULT_MOD")->nullable();
 

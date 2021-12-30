@@ -427,30 +427,24 @@ class AdminController extends Controller
             $RowSizer = sizeof($Header);
             foreach ($personalinfo as $key => $personalinf) {
 
-                $ItemWithDataArray=array();
+             //   $ItemWithDataArray=array();
                 if ($key > 0) {
 
                     $Items = explode('|', $personalinf);
                     for ($i = 0; $i < $RowSizer; $i++) {
-                        $ItemWithDataArray[$Header[$i]] = $Items[$i];
+                        $ArrayLine[$Header[$i]] = $Items[$i];
 
                     }
-                    $ArrayLine[$FilesDump->id]=$ItemWithDataArray;
+                    $FilesDump->CronText::create($ArrayLine);
 
                 }
 
             }
 
-            $personalinfo=0;
-            $Header=0;
-        }
-
-        foreach ($FilesDumps as $FilesDumpz) {
-
-        //    echo  DumpsMaps::find(17)->CronText."%%%%%%%".DumpsMaps::find(17)->id."<br>";
-            DumpsMaps::find(17)->CronText::create($ArrayLine[17]);
 
         }
+
+
 
 
 
