@@ -440,8 +440,24 @@ class AdminController extends Controller
             $personalinfo = file('C:\DatFile/' . $FilesDump->FileName);
             $personalinfo = str_replace("\r\n", "", $personalinfo);
             $Header = explode('|', $personalinfo[0]); // this is for foreach Count of each colmun in row
-            $RowSizer = sizeof($Header);
+
             $TableName=str_replace(".dat",'s',$FilesDump->FileName);
+            $RowSizer = sizeof($Header);
+            for ($i = 0; $i < $RowSizer; $i++) {
+                $Result=$this->checkColumnExist($TableName,$Header[$i]);
+                if(!$Result){
+                    $type = 'string';
+                    $length = 20;
+                    $fieldName = $Header[$i];
+                    Schema::table($TableName, function (Blueprint $table) use ($type, $length, $fieldName) {
+                        $table->$type($fieldName, $length);
+                    });
+
+                }
+            }
+
+
+
             foreach ($personalinfo as $key => $personalinf) {
 
              //   $ItemWithDataArray=array();
@@ -451,17 +467,9 @@ class AdminController extends Controller
                  //  dd($Header);
                     for ($i = 0; $i < $RowSizer; $i++) {
                         $ArrayLine[$Header[$i]] = $Items[$i];
-                       $Result=$this->checkColumnExist($TableName,$Header[$i]);
+                     //  $Result=$this->checkColumnExist($TableName,$Header[$i]);
 
-                     if(!$Result){
-                         $type = 'string';
-                         $length = 20;
-                         $fieldName = $Header[$i];
-                         Schema::table($TableName, function (Blueprint $table) use ($type, $length, $fieldName) {
-                             $table->$type($fieldName, $length);
-                         });
 
-                     }
 
 
 
