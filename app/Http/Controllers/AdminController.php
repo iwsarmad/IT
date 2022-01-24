@@ -444,34 +444,27 @@ class AdminController extends Controller
                 if ($key > 0) {
 
                     $Items = explode('|', $personalinf);
+                 //  dd($Header);
                     for ($i = 0; $i < $RowSizer; $i++) {
                         $ArrayLine[$Header[$i]] = $Items[$i];
-                        $TableName[$i]=str_replace(".dat",'s',$FilesDump->FileName);
-
-                      //  echo $Header[$i];
-
-                       // dd($TableName);
-                     if($TableName[$i]=="io_arts"){
-                          echo print_r($Header);
-                        }
+                        $TableName=str_replace(".dat",'s',$FilesDump->FileName);
 
 
-                     $Result=$this->checkColumnExist($TableName[$i],$Header[$i]);
+                      $Result=$this->checkColumnExist($TableName,$Header[$i]);
 
                      if(!$Result){
                          $type = 'string';
                          $length = 20;
                          $fieldName = $Header[$i];
-                         Schema::table($TableName[$i], function (Blueprint $table) use ($type, $length, $fieldName) {
+                         Schema::table($TableName, function (Blueprint $table) use ($type, $length, $fieldName) {
                              $table->$type($fieldName, $length);
                          });
 
                      }
 
-                 //    dd($TableName[$i]);
+
 
                     }
-                    // CHIAVE
 
                    $HaveExsist=$FilesDump->CronText::where('CHIAVE','=',$ArrayLine['CHIAVE'])->count();
                     if($HaveExsist>0){
@@ -480,8 +473,6 @@ class AdminController extends Controller
                     }else{
                            $FilesDump->CronText::create($ArrayLine);
                     }
-
-
 
                 }
 
