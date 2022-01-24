@@ -418,6 +418,7 @@ class AdminController extends Controller
     public function checkColumnExist($table_name,$coumn_name){
         try{
             $has_table = Schema::hasColumn($table_name,$coumn_name);
+
             return $has_table;
         }
         catch(\Exception $e){
@@ -432,12 +433,15 @@ class AdminController extends Controller
 
         $FilesDumps = DB::table('dumps_maps')->select('FileName', 'CronText','id')->distinct()->get();
         $ArrayLine = array();
+
         foreach ($FilesDumps as $FilesDump) {
+          //  $Header= array();
            //$FilesDump->CronText::truncate();
             $personalinfo = file('C:\DatFile/' . $FilesDump->FileName);
             $personalinfo = str_replace("\r\n", "", $personalinfo);
             $Header = explode('|', $personalinfo[0]); // this is for foreach Count of each colmun in row
             $RowSizer = sizeof($Header);
+            $TableName=str_replace(".dat",'s',$FilesDump->FileName);
             foreach ($personalinfo as $key => $personalinf) {
 
              //   $ItemWithDataArray=array();
@@ -447,10 +451,7 @@ class AdminController extends Controller
                  //  dd($Header);
                     for ($i = 0; $i < $RowSizer; $i++) {
                         $ArrayLine[$Header[$i]] = $Items[$i];
-                        $TableName=str_replace(".dat",'s',$FilesDump->FileName);
-
-
-                      $Result=$this->checkColumnExist($TableName,$Header[$i]);
+                       $Result=$this->checkColumnExist($TableName,$Header[$i]);
 
                      if(!$Result){
                          $type = 'string';
