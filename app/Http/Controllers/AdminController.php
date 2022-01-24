@@ -16,6 +16,8 @@ use App\Models\Trip;
 use App\Models\User;
 use Carbon\Carbon;
 use http\Header;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 use Validator;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -413,6 +415,17 @@ class AdminController extends Controller
     }
 
 
+    public function checkColumnExist($table_name,$coumn_name){
+        try{
+            $has_table = Schema::hasColumn($table_name,$coumn_name);
+            return $has_table;
+        }
+        catch(\Exception $e){
+            return false;
+        }
+    }
+
+
     public function ReadFile()
     {
 
@@ -420,7 +433,7 @@ class AdminController extends Controller
         $FilesDumps = DB::table('dumps_maps')->select('FileName', 'CronText','id')->distinct()->get();
         $ArrayLine = array();
         foreach ($FilesDumps as $FilesDump) {
-            $FilesDump->CronText::truncate();
+           //$FilesDump->CronText::truncate();
             $personalinfo = file('C:\DatFile/' . $FilesDump->FileName);
             $personalinfo = str_replace("\r\n", "", $personalinfo);
             $Header = explode('|', $personalinfo[0]); // this is for foreach Count of each colmun in row
@@ -433,9 +446,42 @@ class AdminController extends Controller
                     $Items = explode('|', $personalinf);
                     for ($i = 0; $i < $RowSizer; $i++) {
                         $ArrayLine[$Header[$i]] = $Items[$i];
+                        $TableName[$i]=str_replace(".dat",'s',$FilesDump->FileName);
+
+                      //  echo $Header[$i];
+
+                       // dd($TableName);
+                     if($TableName[$i]=="io_arts"){
+                          echo print_r($Header);
+                        }
+
+
+                     $Result=$this->checkColumnExist($TableName[$i],$Header[$i]);
+
+                     if(!$Result){
+                         $type = 'string';
+                         $length = 20;
+                         $fieldName = $Header[$i];
+                         Schema::table($TableName[$i], function (Blueprint $table) use ($type, $length, $fieldName) {
+                             $table->$type($fieldName, $length);
+                         });
+
+                     }
+
+                 //    dd($TableName[$i]);
 
                     }
-                    $FilesDump->CronText::create($ArrayLine);
+                    // CHIAVE
+
+                   $HaveExsist=$FilesDump->CronText::where('CHIAVE','=',$ArrayLine['CHIAVE'])->count();
+                    if($HaveExsist>0){
+                      //  dd($ArrayLine);
+                           $FilesDump->CronText::where('CHIAVE','=',$ArrayLine['CHIAVE'])->update($ArrayLine);
+                    }else{
+                           $FilesDump->CronText::create($ArrayLine);
+                    }
+
+
 
                 }
 

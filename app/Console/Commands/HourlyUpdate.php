@@ -77,7 +77,7 @@ class HourlyUpdate extends Command
 
         foreach ($FilesDumps as $FilesDump) {
 
-            $FilesDump->CronText::truncate();
+         //   $FilesDump->CronText::truncate();
             $personalinfo = file('C:\DatFile/' . $FilesDump->FileName);
             $personalinfo = str_replace("\r\n", "", $personalinfo);
             $Header = explode('|', $personalinfo[0]); // this is for foreach Count of each colmun in row
