@@ -434,6 +434,34 @@ class AdminController extends Controller
         $FilesDumps = DB::table('dumps_maps')->select('FileName', 'CronText','id')->distinct()->get();
         $ArrayLine = array();
 
+
+
+        foreach ($FilesDumps as $FilesDump) {
+            //  $Header= array();
+            //$FilesDump->CronText::truncate();
+            $personalinfo = file('C:\DatFile/' . $FilesDump->FileName);
+            $personalinfo = str_replace("\r\n", "", $personalinfo);
+            $Header = explode('|', $personalinfo[0]); // this is for foreach Count of each colmun in row
+
+            $TableName = str_replace(".dat", 's', $FilesDump->FileName);
+            $RowSizer = sizeof($Header);
+            for ($i = 0; $i < $RowSizer; $i++) {
+                $Result = $this->checkColumnExist($TableName, $Header[$i]);
+                if (!$Result) {
+                    $type = 'string';
+                    $length = 20;
+                    $fieldName = $Header[$i];
+                    Schema::table($TableName, function (Blueprint $table) use ($type, $length, $fieldName) {
+                        $table->$type($fieldName, $length);
+                    });
+
+                }
+            }
+        }
+
+
+
+
         foreach ($FilesDumps as $FilesDump) {
           //  $Header= array();
            //$FilesDump->CronText::truncate();
