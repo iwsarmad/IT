@@ -433,10 +433,11 @@ class AdminController extends Controller
 
         $FilesDumps = DB::table('dumps_maps')->select('FileName', 'CronText','id')->distinct()->get();
         $ArrayLine = array();
-
+        $ArrayLine2 = array();
 
 
         foreach ($FilesDumps as $FilesDump) {
+
             //  $Header= array();
             //$FilesDump->CronText::truncate();
             $personalinfo = file('C:\DatFile/' . $FilesDump->FileName);
@@ -446,8 +447,12 @@ class AdminController extends Controller
             $TableName = str_replace(".dat", 's', $FilesDump->FileName);
             $RowSizer = sizeof($Header);
             for ($i = 0; $i < $RowSizer; $i++) {
+
                 $Result = $this->checkColumnExist($TableName, $Header[$i]);
+                $ArrayLine2[$i]["tablename"]=$TableName;
+                $ArrayLine2[$i]["colname"]=$Header[$i];
                 if (!$Result) {
+
                     $type = 'string';
                     $length = 20;
                     $fieldName = $Header[$i];
@@ -457,6 +462,8 @@ class AdminController extends Controller
 
                 }
             }
+
+            dd($ArrayLine2);
         }
 
 
