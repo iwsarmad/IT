@@ -463,7 +463,7 @@ class AdminController extends Controller
                 }
             }
 
-            dd($ArrayLine2);
+          //  print_r($ArrayLine2);
         }
 
 
@@ -478,23 +478,12 @@ class AdminController extends Controller
 
             $TableName=str_replace(".dat",'s',$FilesDump->FileName);
             $RowSizer = sizeof($Header);
-            for ($i = 0; $i < $RowSizer; $i++) {
-                $Result=$this->checkColumnExist($TableName,$Header[$i]);
-                if(!$Result){
-                    $type = 'string';
-                    $length = 20;
-                    $fieldName = $Header[$i];
-                    Schema::table($TableName, function (Blueprint $table) use ($type, $length, $fieldName) {
-                        $table->$type($fieldName, $length);
-                    });
 
-                }
-            }
 
 
 
             foreach ($personalinfo as $key => $personalinf) {
-
+                unset($ArrayLine);
              //   $ItemWithDataArray=array();
                 if ($key > 0) {
 
@@ -509,6 +498,8 @@ class AdminController extends Controller
 
 
                     }
+
+                  
 
                    $HaveExsist=$FilesDump->CronText::where('CHIAVE','=',$ArrayLine['CHIAVE'])->count();
                     if($HaveExsist>0){
