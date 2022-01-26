@@ -499,7 +499,7 @@ class AdminController extends Controller
 
                     }
 
-                  
+
 
                    $HaveExsist=$FilesDump->CronText::where('CHIAVE','=',$ArrayLine['CHIAVE'])->count();
                     if($HaveExsist>0){
