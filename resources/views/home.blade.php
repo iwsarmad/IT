@@ -1,8 +1,8 @@
 
-@extends('TeamContainer.SideBar')
+@extends('classTheme.app')
 @section('content')
 
-    <div class="app-content  my-3 my-md-5">
+    <div class="app-content">
         <div class="side-app">
             <div class="page-header">
                 <h4 class="page-title">Dashboard</h4>

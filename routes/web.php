@@ -20,6 +20,7 @@ Route::get('/', function () {
 
 
 
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/FLFL', function () {
     return "FLFL";
 });
@@ -31,7 +32,7 @@ Auth::routes();
 
 
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+//Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/setting', [App\Http\Controllers\AdminController::class, 'Settings']);
 Route::post('/StoresSetting', [App\Http\Controllers\AdminController::class, 'StoresSetting']);
 Route::get('/AddUser', [App\Http\Controllers\AdminController::class, 'AddUser']);
