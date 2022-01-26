@@ -1,6 +1,6 @@
 @extends('TeamContainer.header')
 @section('content')
-    <body>
+
 
 
     <div class="login-img">
