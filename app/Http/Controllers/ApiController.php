@@ -57,4 +57,12 @@ class ApiController extends Controller
 
         return response(["customers_contact"=>$customers_contact],200);
     }
+
+
+    public function products()
+    {
+        $products=DB::select('call products()');
+
+        return response(["products"=>$products],200);
+    }
 }

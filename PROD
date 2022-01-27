@@ -1,0 +1,73 @@
+
+b2b_invites
+
+BEGIN
+SELECT cc.RAG_SOC busisnes_name ,dd.COGNOME_NOME Last_Name ,dd.NOME NAME , dd.EMAIL1 Email FROM io_clifor_gens cc
+inner JOIN io_clifor_detcons dd ON dd.COD_CLIFOR=cc.COD_CLIFOR;
+END
+
+
+customers
+
+
+
+BEGIN
+SELECT cc.COD_CLIFOR customer_code,cc.RAG_SOC busisnes_name FROM io_clifor_gens cc
+WHERE cc.TIPO_CLIFOR=0;
+END
+
+
+customers_contact
+
+BEGIN
+SELECT cc.NOME name,cc.COGNOME_NOME last_name,cc.TIPO_CONTATTO contact_type,
+cc.PREF profinal,dd.RAG_SOC customer_name,cc.INDIRIZZO adress,cc.CITTA,cc.CAP zip,cc.ALTRO_INDIRIZZO1 other_address1,
+cc.ALTRO_INDIRIZZO2 other_address2,cc.PR state,cc.TELEFONO1 phone1,cc.TELEFONO2 phone2,cc.CELLULARE1 mobile1 ,cc.CELLULARE2 mobile2, cc.TELEF_CASA home_phone,cc.FAX fax,cc.EMAIL1 email,
+cc.EMAIL2, cc.NOTE
+FROM io_clifor_detcons cc
+INNER JOIN io_clifor_gens dd ON dd.COD_CLIFOR=cc.COD_CLIFOR
+WHERE cc.COD_CLIFOR=COD_CLIFOR;
+END
+
+
+customer_details
+
+
+BEGIN
+SELECT cc.COD_CLIFOR customer_code
+,cc.RAG_SOC busisnes_name
+,cc.CODICE_FISCALE fiscal_Code,cc.PARTITA_IVA vat_numbers
+,cc.INDIRIZZO address ,cc.CITTA city,cc.CAP zip,cc.PROVINCIA state,cc.NAZIONE country,cc.TELEFONO1 phone,cc.CELLULARE mobile_phone,cc.EMAIL mail,cc.LATITUDINE Latitude ,cc.LONGITUDINE Longitude
+FROM io_clifor_gens cc
+WHERE cc.TIPO_CLIFOR=0 AND cc.COD_CLIFOR=COD_CLIFOR;
+END
+
+
+
+
+
+
+
+
+products
+
+BEGIN
+SELECT prodcut.COD_ART atricle_code,prodcut.DES_ART atricle_description,prodcut.DES_FAM filter,prodcut.DES_SFAM filter2,prodcut.UM1 um1,prodcut.UM2 um2
+,prodcut.FATTORE_CONVERSIONE
+,prodcut.FLG_LOCK_UM_DEFAULT
+ FROM io_arts prodcut;
+END
+
+
+
+
+
+
+
+
+suppliers
+
+BEGIN
+SELECT cc.COD_CLIFOR suppliers_code,cc.RAG_SOC busisnes_name FROM io_clifor_gens cc
+WHERE cc.TIPO_CLIFOR=1;
+END
