@@ -65,4 +65,54 @@ class ApiController extends Controller
 
         return response(["products"=>$products],200);
     }
+
+
+    public function unity_measures()
+    {
+        $unity_measures=DB::select('call unity_measures()');
+
+        return response(["unity_measures"=>$unity_measures],200);
+    }
+
+
+    public function price_list()
+    {
+        $price_list=DB::select('call price_list()');
+
+        return response(["price_list"=>$price_list],200);
+    }
+
+
+    public function discounts()
+    {
+        $discounts=DB::select('call discounts()');
+
+        return response(["discounts"=>$discounts],200);
+    }
+
+
+    public function stocks()
+    {
+        $stocks=DB::select('call stocks()');
+
+        return response(["stocks"=>$stocks],200);
+    }
+
+
+    public function documents()
+    {
+        $documents=DB::select('call documents()');
+
+        return response(["documents"=>$documents],200);
+    }
+
+
+    public function expiration_date()
+    {
+        $expiration_date=DB::select('call expiration_date()');
+        return response(["expiration_date"=>$expiration_date],200);
+    }
+
+
+    // unity_measures
 }

@@ -71,3 +71,63 @@ BEGIN
 SELECT cc.COD_CLIFOR suppliers_code,cc.RAG_SOC busisnes_name FROM io_clifor_gens cc
 WHERE cc.TIPO_CLIFOR=1;
 END
+
+
+
+
+
+
+
+
+
+
+expiration_date
+
+
+
+BEGIN
+SELECT sc.COD_CLIFOR,sc.TIPO_CLIFOR,sc.NUM_DOC,sc.DATA_DOC,sc.NUM_REG,sc.DAT_SCAD,sc.IMPORTO,sc.DES_STATO from io_clifor_scadocs sc;
+END
+
+
+documents
+
+BEGIN
+SELECT cc.COD_CLIFOR,cc.TIPO_CLIFOR,cc.TOTALEDOC,cc.COD_TIPODOC,cc.COD_STIPODOC,cc.NUMREG,cc.DATA_DOC,cc.DATACONS from io_clifor_testdocs cc;
+END
+
+
+
+
+price_list
+
+BEGIN
+SELECT PL.COD_ART,PL.COD_CLIFOR,PL.COD_LISTINO,PL.PREZZO,PL.QUANTITA_INIZIO,PL.QUANTITA_FINE,PL.DATA_INIZIO,PL.DATA_FINE,PL.PRIORITA,PL.TIPO_LISTINO
+FROM io_listini_fulls AS PL;
+END
+
+
+products
+
+BEGIN
+SELECT prodcut.COD_ART atricle_code,prodcut.DES_ART atricle_description,prodcut.DES_FAM filter,prodcut.DES_SFAM filter2,prodcut.UM1 um1,prodcut.UM2 um2
+,prodcut.FATTORE_CONVERSIONE
+,prodcut.FLG_LOCK_UM_DEFAULT
+ FROM io_arts prodcut;
+END
+
+
+
+unity_measures
+
+BEGIN
+SELECT um.COD_ART AS ArticalCode,um.UM,um.FAT_CONV converationFactor,um.DESC_UM um_description,um.TIPO_UM,um.FLG_DEFAULT FROM io_art_ums um;
+END
+
+stocks
+BEGIN
+SELECT ga.COD_ARTICOLO ArticleCode,ga.UM1,ga.COD_DEPOSITO,ga.GIACENZA FROM io_giacenzes ga;
+END
+
+
+

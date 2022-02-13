@@ -27,3 +27,9 @@ Route::get('/suppliers', [App\Http\Controllers\ApiController::class, 'suppliers'
 Route::get('/customer_details', [App\Http\Controllers\ApiController::class, 'customer_details'])->name('customer_details');
 Route::get('/customers_contact', [App\Http\Controllers\ApiController::class, 'customers_contact'])->name('customers_contact');
 Route::get('/products', [App\Http\Controllers\ApiController::class, 'products'])->name('products');
+Route::get('/unity_measures', [App\Http\Controllers\ApiController::class, 'unity_measures'])->name('unity_measures');
+Route::get('/price_list', [App\Http\Controllers\ApiController::class, 'price_list'])->name('price_list');
+Route::get('/discounts', [App\Http\Controllers\ApiController::class, 'discounts'])->name('discounts');
+Route::get('/stocks', [App\Http\Controllers\ApiController::class, 'stocks'])->name('stocks');
+Route::get('/documents', [App\Http\Controllers\ApiController::class, 'documents'])->name('documents');
+Route::get('/expiration_date', [App\Http\Controllers\ApiController::class, 'expiration_date'])->name('expiration_date');
