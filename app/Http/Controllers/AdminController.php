@@ -25,6 +25,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
 use Spatie\Permission\Models\Role;
 use App\Models\io_art;
+use function Ramsey\Uuid\v1;
 
 class AdminController extends Controller
 {
@@ -399,8 +400,10 @@ class AdminController extends Controller
 
         //   AddClient
         $Branches = Branch::all();
-        $CurrentClients = BusinessInvites::all();
+     //   $CurrentClients = BusinessInvites::all();
+        $CurrentClients = DB::select('call b2b_invites()');
 
+       // dd($CurrentClients);
 
         $InformationArray = array(
             'roles' => Role::all(),
@@ -525,5 +528,166 @@ class AdminController extends Controller
 
     }
 
+    public function orders(){
 
+
+        $orders=[];
+        $InformationArray = array(
+
+            "orders" => $orders
+        );
+
+
+        return view('AdminPages.orders', $InformationArray);
+    //    return view('orders');
+    }
+
+    public function Customers(){
+
+
+        $customers=DB::select('call customers()');
+
+      //  dd($customers);
+        $InformationArray = array(
+
+            "customers" => $customers
+        );
+
+
+        return view('AdminPages.Customers', $InformationArray);
+
+        // customers
+    }
+
+
+    public function Suppliers(){
+
+
+        $Suppliers=DB::select('call suppliers()');
+
+      //    dd($Suppliers);
+        $InformationArray = array(
+
+            "Suppliers" => $Suppliers
+        );
+
+
+        return view('AdminPages.Suppliers', $InformationArray);
+
+        // customers
+    }
+
+
+    public function UnityMeausers(){
+
+
+        $UnityMeausers=DB::select('call unity_measures()');
+
+       // dd($UnityMeausers);
+        $InformationArray = array(
+
+            "UnityMeausers" => $UnityMeausers
+        );
+
+
+        return view('AdminPages.UnityMeausers', $InformationArray);
+
+        // customers
+    }
+
+
+
+    public function PriceList(){
+
+
+        $PriceList=DB::select('call price_list()');
+
+        // dd($PriceList);
+        $InformationArray = array(
+
+            "PriceList" => $PriceList
+        );
+
+
+        return view('AdminPages.PriceList', $InformationArray);
+
+        // customers
+    }
+    // PriceList
+
+    // Discount Stock
+    public function Discount(){
+
+
+        $Discount=DB::select('call discounts()');
+
+        // dd($Discount);
+        $InformationArray = array(
+
+            "Discount" => $Discount
+        );
+
+
+        return view('AdminPages.Discount', $InformationArray);
+
+        // customers
+    }
+
+
+    public function Stock(){
+
+
+        $Stock=DB::select('call stocks()');
+
+   //      dd($Stock);
+        $InformationArray = array(
+
+            "Stock" => $Stock
+        );
+
+
+        return view('AdminPages.Stock', $InformationArray);
+
+        // customers
+    }
+
+
+    public function Document(){
+
+
+        $Document=DB::select('call documents()');
+
+            // dd($Document);
+        $InformationArray = array(
+
+            "Document" => $Document
+        );
+
+
+        return view('AdminPages.Document', $InformationArray);
+
+        // customers
+    }
+
+
+    public function ExpirationDate(){
+
+
+        $ExpirationDate=DB::select('call expiration_date()');
+
+      //  dd($ExpirationDate);
+        $InformationArray = array(
+
+            "ExpirationDate" => $ExpirationDate
+        );
+
+
+        return view('AdminPages.ExpirationDate', $InformationArray);
+
+        // customers
+    }
+
+    // ExpirationDate
+
+    // Document
 }

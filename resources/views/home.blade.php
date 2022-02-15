@@ -54,7 +54,7 @@
                             <li>
                                 <a href="form-elements.html" class="slide-item">create user</a></li>
                             <li>
-                                <a href="form-elements.html" class="slide-item">b2b invites</a></li>
+                                <a href="{{url('B2BInvites')}}" class="slide-item">b2b invites</a></li>
                         </ul>
 
 
@@ -91,29 +91,27 @@
                         <ul>
 
                             <li>
-                                <a href="form-elements.html" class="slide-item">Customers</a>
+                                <a href="{{url('Customers')}}" class="slide-item">Customers</a>
                             </li>
 
                             <li>
-                                <a href="form-elements.html" class="slide-item">Suppliers</a>
+                                <a href="{{url('Suppliers')}}" class="slide-item">Suppliers</a>
                             </li>
 
 
-                            <li>
-                                <a href="form-elements.html" class="slide-item">Customer Contact</a>
-                            </li>
+
 
 
                             <li>
-                                <a href="form-elements.html" class="slide-item">Products</a>
-                            </li>
-
-                            <li>
-                                <a href="form-elements.html" class="slide-item">Unity meausers</a>
+                                <a href="{{url('Products')}}" class="slide-item">Products</a>
                             </li>
 
                             <li>
-                                <a href="form-elements.html" class="slide-item">Price list</a>
+                                <a href="{{url('UnityMeausers')}}" class="slide-item">Unity meausers</a>
+                            </li>
+
+                            <li>
+                                <a href="{{url('PriceList')}}" class="slide-item">Price list</a>
                             </li>
 
                             <li>
@@ -121,15 +119,15 @@
                             </li>
 
                             <li>
-                                <a href="form-elements.html" class="slide-item">Stock </a>
+                                <a href="{{url('Stock')}}" class="slide-item">Stock </a>
                             </li>
 
                             <li>
-                                <a href="form-elements.html" class="slide-item">Document </a>
+                                <a href="{{url('Document')}}" class="slide-item">Document </a>
                             </li>
 
                             <li>
-                                <a href="form-elements.html" class="slide-item">Expiration Date </a>
+                                <a href="{{url('ExpirationDate')}}" class="slide-item">Expiration Date </a>
                             </li>
 
                             <li>

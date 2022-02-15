@@ -5,28 +5,28 @@
 
 
 
-            <div class="row">
-                <div class="col-lg-12 col-md-12 col-sm-12">
-                    @if ($errors->any())
-                        <div class="alert alert-danger">
-                            <ul>
-                                @foreach ($errors->all() as $error)
-                                    <li>{{ $error }}</li>
-                                @endforeach
-                            </ul>
-                        </div>
-                    @endif
-                </div>
-
-
-
-                <div class="col-lg-12 col-md-12 col-sm-12">
-                    @if(Session::has('message'))
-                        <p class="alert {{ Session::get('alert-class', 'alert-success') }}">{{ Session::get('message') }}</p>
-                    @endif
-                </div>
-
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12">
+                @if ($errors->any())
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
             </div>
+
+
+
+            <div class="col-lg-12 col-md-12 col-sm-12">
+                @if(Session::has('message'))
+                    <p class="alert {{ Session::get('alert-class', 'alert-success') }}">{{ Session::get('message') }}</p>
+                @endif
+            </div>
+
+        </div>
 
 
         <div class="container">
@@ -34,7 +34,7 @@
                 <div class="col-lg-12 card">
 
                     <div class="card-header">
-                        <h3 class="card-title">B2B Invites</h3>
+                        <h3 class="card-title">UnityMeausers</h3>
                     </div>
                     <div class="card-body">
 
@@ -48,9 +48,16 @@
                                 <thead>
                                 <tr>
 
-                                    <th scope="col">Customer Email</th>
-                                    <th scope="col"> Customer Name</th>
-                                    <th scope="col">Busisnes  Name</th>
+
+                                    <th scope="col">ArticalCode</th>
+                                    <th scope="col">UM</th>
+                                    <th scope="col">converationFactor</th>
+                                    <th scope="col">um_description</th>
+                                    <th scope="col">TIPO_UM</th>
+                                    <th scope="col">FLG_DEFAULT</th>
+
+
+
 
 
 
@@ -58,14 +65,14 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                @foreach($CurrentClients as $CurrentClient)
+                                @foreach($UnityMeausers as $Product)
                                     <tr>
-                                        <td>{{$CurrentClient->Email}}</td>
-                                        <td>{{$CurrentClient->Last_Name}}</td>
-                                        <td>{{$CurrentClient->busisnes_name}}</td>
-
-
-
+                                        <td>{{$Product->ArticalCode}}</td>
+                                        <td>{{$Product->UM}}</td>
+                                        <td>{{$Product->converationFactor}}</td>
+                                        <td>{{$Product->um_description}}</td>
+                                        <td>{{$Product->TIPO_UM}}</td>
+                                        <td>{{$Product->FLG_DEFAULT}}</td>
                                     </tr>
                                 @endforeach
                                 </tbody>
@@ -78,7 +85,7 @@
         </div>
 
 
-        </div>
+    </div>
     </div>
 
     <!--

@@ -5,28 +5,28 @@
 
 
 
-            <div class="row">
-                <div class="col-lg-12 col-md-12 col-sm-12">
-                    @if ($errors->any())
-                        <div class="alert alert-danger">
-                            <ul>
-                                @foreach ($errors->all() as $error)
-                                    <li>{{ $error }}</li>
-                                @endforeach
-                            </ul>
-                        </div>
-                    @endif
-                </div>
-
-
-
-                <div class="col-lg-12 col-md-12 col-sm-12">
-                    @if(Session::has('message'))
-                        <p class="alert {{ Session::get('alert-class', 'alert-success') }}">{{ Session::get('message') }}</p>
-                    @endif
-                </div>
-
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12">
+                @if ($errors->any())
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
             </div>
+
+
+
+            <div class="col-lg-12 col-md-12 col-sm-12">
+                @if(Session::has('message'))
+                    <p class="alert {{ Session::get('alert-class', 'alert-success') }}">{{ Session::get('message') }}</p>
+                @endif
+            </div>
+
+        </div>
 
 
         <div class="container">
@@ -34,7 +34,7 @@
                 <div class="col-lg-12 card">
 
                     <div class="card-header">
-                        <h3 class="card-title">B2B Invites</h3>
+                        <h3 class="card-title">Document</h3>
                     </div>
                     <div class="card-body">
 
@@ -48,9 +48,19 @@
                                 <thead>
                                 <tr>
 
-                                    <th scope="col">Customer Email</th>
-                                    <th scope="col"> Customer Name</th>
-                                    <th scope="col">Busisnes  Name</th>
+
+                                    <th scope="col">COD_CLIFOR</th>
+                                    <th scope="col">TIPO_CLIFOR</th>
+                                    <th scope="col">TOTALEDOC</th>
+                                    <th scope="col">COD_TIPODOC</th>
+                                    <th scope="col">COD_STIPODOC</th>
+                                    <th scope="col">NUMREG</th>
+                                    <th scope="col">DATA_DOC</th>
+                                    <th scope="col">DATACONS</th>
+
+
+
+
 
 
 
@@ -58,14 +68,18 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                @foreach($CurrentClients as $CurrentClient)
+                                @foreach($Document as $Product)
+
+
                                     <tr>
-                                        <td>{{$CurrentClient->Email}}</td>
-                                        <td>{{$CurrentClient->Last_Name}}</td>
-                                        <td>{{$CurrentClient->busisnes_name}}</td>
-
-
-
+                                        <td>{{$Product->COD_CLIFOR}}</td>
+                                        <td>{{$Product->TIPO_CLIFOR}}</td>
+                                        <td>{{$Product->TOTALEDOC}}</td>
+                                        <td>{{$Product->COD_TIPODOC}}</td>
+                                        <td>{{$Product->COD_STIPODOC}}</td>
+                                        <td>{{$Product->NUMREG}}</td>
+                                        <td>{{$Product->DATA_DOC}}</td>
+                                        <td>{{$Product->DATACONS}}</td>
                                     </tr>
                                 @endforeach
                                 </tbody>
@@ -78,7 +92,7 @@
         </div>
 
 
-        </div>
+    </div>
     </div>
 
     <!--

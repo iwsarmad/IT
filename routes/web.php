@@ -48,14 +48,45 @@ Route::get('/GetBillsByTripId', [App\Http\Controllers\AdminController::class, 'G
 Route::get('/TripManagementFillBill', [App\Http\Controllers\AdminController::class, 'TripManagementFillBill']);
 Route::post('/StoreBillContent', [App\Http\Controllers\AdminController::class, 'StoreBillContent']);
 //B2BInvites
+Route::get('/ReadFile', [App\Http\Controllers\AdminController::class, 'ReadFile']);
+
+
+
+
 
 Route::get('/B2BInvites', [App\Http\Controllers\AdminController::class, 'B2BInvites']);
 
+Route::get('/orders', [App\Http\Controllers\AdminController::class, 'orders']);
+
+Route::get('/Customers', [App\Http\Controllers\AdminController::class, 'Customers']);
+
+Route::get('/Suppliers', [App\Http\Controllers\AdminController::class, 'Suppliers']);
+
+Route::get('/Products', [App\Http\Controllers\AdminController::class, 'Products']);
+
+Route::get('/UnityMeausers', [App\Http\Controllers\AdminController::class, 'UnityMeausers']);
 
 
-Route::get('/ReadFile', [App\Http\Controllers\AdminController::class, 'ReadFile']);
+Route::get('/PriceList', [App\Http\Controllers\AdminController::class, 'PriceList']);
+
+
+Route::get('/Discount', [App\Http\Controllers\AdminController::class, 'Discount']);
+
+Route::get('/Stock', [App\Http\Controllers\AdminController::class, 'Stock']);
+
+
+Route::get('/Document', [App\Http\Controllers\AdminController::class, 'Document']);
+
+Route::get('/ExpirationDate', [App\Http\Controllers\AdminController::class, 'ExpirationDate']);
 
 //Business
 // TripManagementFillBill
 // StoreNewBill GetBillsByTripId
 // StoreBillContent
+
+/*
+ *
+
+Expiration Date
+
+ */
