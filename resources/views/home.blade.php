@@ -24,7 +24,11 @@
         <div class="row ">
             <div class="col-md-3">
                 <div class="card">
-                    <div class="card-header"> DataBase</div>
+                    <div class="card-header">
+
+                        <img src = "{{url('assets/icons/database.svg')}}" style="height: 10%;width: 10%;" alt="device_desktop"/>
+                        DataBase
+                    </div>
 
                     <div class="card-body">
                         <ul>
@@ -44,7 +48,10 @@
 
             <div class="col-md-3">
                 <div class="card">
-                    <div class="card-header"> users</div>
+                    <div class="card-header">
+
+                        <img src = "{{url('assets/icons/user.svg')}}" style="height: 10%;width: 10%;" alt="device_desktop"/>
+                        users</div>
 
                     <div class="card-body">
                         <ul>
@@ -66,7 +73,9 @@
 
             <div class="col-md-3">
                 <div class="card">
-                    <div class="card-header"> data from mobile</div>
+                    <div class="card-header">
+                        <img src = "{{url('assets/icons/device_mobile.svg')}}" style="height: 10%;width: 10%;" alt="device_desktop"/>
+                        data from mobile</div>
 
                     <div class="card-body">
                         <ul>
@@ -85,7 +94,10 @@
 
             <div class="col-md-3">
                 <div class="card">
-                    <div class="card-header"> data from ERP</div>
+
+
+                    <div class="card-header">
+                        <img src = "{{url('assets/icons/erp.svg')}}" style="height: 10%;width: 10%;" alt="Data From Erp"/>data from ERP</div>
 
                     <div class="card-body">
                         <ul>
@@ -155,7 +167,9 @@
         <div class="row">
             <div class="col-md-3">
                 <div class="card">
-                    <div class="card-header">push notification</div>
+                    <div class="card-header">
+                        <img src = "{{url('assets/icons/push notification.svg')}}" style="height: 10%;width: 10%;" alt="notification"/>
+                        push notification</div>
 
                     <div class="card-body">
                         <ul>
@@ -173,7 +187,10 @@
 
             <div class="col-md-3">
                 <div class="card">
-                    <div class="card-header">Device Tables</div>
+
+                    <div class="card-header">
+                        <img src = "{{url('assets/icons/device_desktop.svg')}}" style="height: 10%;width: 10%;" alt="notification"/>
+                        Device Tables</div>
 
                     <div class="card-body">
                         <ul>
@@ -208,7 +225,9 @@
 
             <div class="col-md-3">
                 <div class="card">
-                    <div class="card-header">logs</div>
+                    <div class="card-header">
+                        <img src = "{{url('assets/icons/device_desktop.svg')}}" style="height: 10%;width: 10%;" alt="device_desktop"/>
+                        logs</div>
 
                     <div class="card-body">
                         <ul>
@@ -234,7 +253,9 @@
 
             <div class="col-md-3">
                 <div class="card">
-                    <div class="card-header">Setting</div>
+                    <div class="card-header">
+                        <img src = "{{url('assets/icons/iconfinder_ic_settings_48px_3669250.svg')}}" style="height: 10%;width: 10%;" alt="iconfinder_ic_settings_48px_3669250"/>
+                        Setting</div>
 
                     <div class="card-body">
                         <ul>
